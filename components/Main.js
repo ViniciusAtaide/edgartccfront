@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Header from './Header';
 import Blogpost from './Blogpost';
 import Footer from './Footer';
+import {Grid} from 'react-bootstrap';
 
 export default class Main {
   static propTypes = {
@@ -19,9 +20,9 @@ export default class Main {
     return (
       <div style={styles.main}>
         <Header />
-        <div>
+        <Grid>
           {blogposts}
-        </div>
+        </Grid>
         <Footer />
       </div>
     );
@@ -30,6 +31,6 @@ export default class Main {
 
 let styles = {
   main: {
-    fontFamily: 'Lato'
+    fontFamily: 'roboto, sans-serif'
   }
 }

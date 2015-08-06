@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 export default class Blogpost {
   static propTypes = {
@@ -10,26 +11,14 @@ export default class Blogpost {
     const { index, post } = this.props;
 
     return (
-      <div style={(index % 2) === 0 ? styles.pane.even : styles.pane.odd}>
-        <h2>{post.title}</h2>
-        <h5>{post.intro}</h5>
-        <p>{post.body}</p>
-      </div>
+      <Row>
+        <Col md={6} mdOffset={3}>
+          <h2>{post.title}</h2>
+          <h5>{post.intro}</h5>
+          <p>{post.body}</p>
+        </Col>
+      </Row>
     );
   }
 }
 
-let styles = {
-  pane: {
-    even: {
-      padding: '5% 20% 5% 20%',
-      height: '300px',
-      backgroundColor: '#f8f8f8'
-    },
-
-    odd:{
-      padding: '5% 20% 5% 20%',
-      height: '300px'
-    }
-  }
-}
