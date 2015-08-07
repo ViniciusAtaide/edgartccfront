@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import Header from './Header';
-import Blogpost from './Blogpost';
 import Footer from './Footer';
 import {Grid} from 'react-bootstrap';
 
@@ -11,20 +10,11 @@ export default class Main {
   }
 
   render() {
-    let { blogposts } = this.props;
-
-    blogposts = blogposts.map((post, i) =>
-      <Blogpost key={i} post={post} index={i} />
-    );
 
     return (
-      <div style={styles.main}>
-        <Header />
-        <Grid>
-          {blogposts}
-        </Grid>
-        <Footer />
-      </div>
+      <Grid>
+        <p>Maine</p>
+      </Grid>
     );
   }
 }

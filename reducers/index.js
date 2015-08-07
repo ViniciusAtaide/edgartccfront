@@ -1,1 +1,1 @@
-export { default as blogposts } from './blogposts';
+export { default as Main } from './main';

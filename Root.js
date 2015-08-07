@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import * as reducers from './reducers';
+import renderRoutes from './router'; 
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
