@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Connector } from 'redux-react';
+import { connect } from 'react-redux';
 import { Aluno } from "../components";
-export default class Aluno extends Component {
+
+
+export default class AlunoComponent extends Component {
   render() {
     return (
-    	<Connector>
-	    	<Aluno />
-    	</Connector>
+      <Aluno />
     );
   }
 }

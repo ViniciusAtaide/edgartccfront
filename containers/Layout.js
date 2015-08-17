@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import { Connector } from 'redux/react';
+import { Header, Footer } from '../components';
+import { connect } from 'react-redux';
+import { checkLogin } from '../actions/LoginActions';
 
-export default class Main extends Component {
-	
-  static propTypes = {
-    children: React.PropTypes.object
+@connect(state => ({
+  auth: state.auth
+}))
+export default class Layout extends Component {
+
+  constructor(props) {
+    super(props);
   }
- 
+
+  static propTypes = {
+    children: React.PropTypes.object.isRequired,
+    auth: React.PropTypes.object.isRequired
+  };
+
   render() {
-  	return (
-      <Header />
-      	{ this.props.children }
-      <Footer />
-  	);
+    return (
+      <div>
+        <Header />
+          { this.props.children }
+        <Footer />
+      </div>
+    );
   }
 }

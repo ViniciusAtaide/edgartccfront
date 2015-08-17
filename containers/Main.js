@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Connector } from 'react-redux';
-import { Header, Footer } from '../components';
-import * as Actions from '../actions/Actions';
-import { Main } from '../components/Main';
+import { Main } from '../components';
+import * as Actions from '../actions/LoginActions';
+import { connect } from 'react-redux';
 
-export default class Main extends Component {
- render() {
+@connect(state => ({
+  reports: state.reports
+}))
+export default class MainComponent extends Component {
+  render() {
+
+    const { reports, dispatch } = this.props;
+    let actions = bindActionCreators(Actions, dispatch);
+
     return (
-      <Connector>
-        <Main />
-      </Connector>
+      <Main reports={reports} dispatch={actions} />
     );
   }
 }

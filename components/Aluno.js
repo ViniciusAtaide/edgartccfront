@@ -5,22 +5,18 @@ import {Grid} from 'react-bootstrap';
 
 export default class Main {
   static propTypes = {
-    blogposts: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
-  }
+    reports: PropTypes.array.isRequired,
+    dispatch: PropTypes.object.isRequired
+  };
 
   render() {
+
+    const { reports, actions } = this.props;
 
     return (
       <Grid>
         <p>Aluno</p> 
       </Grid>
     );
-  }
-}
-
-let styles = {
-  main: {
-    fontFamily: 'roboto, sans-serif'
   }
 }
