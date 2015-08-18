@@ -1,17 +1,12 @@
 import { TOGGLE_LOGIN } from '../constants/ActionTypes';
-import merge from 'object-merge';
-
+import reduceFn from '../lib/reduceFn';
 
 const initialState = {
   subscribe: false
 };
 
-const ActionsMap = {
+const ActionMap = {
   [TOGGLE_LOGIN]: (state, action) => ({subscribe: !state.subscribe})
 };
 
-export default function login(state = initialState, action = null) {
-  const reduceFn = ActionsMap[action.type];
-  if (typeof reduceFn === 'undefined') return state;
-  return merge(state, reduceFn(state, action));
-}
+export default reduceFn.bind(this, ActionMap, initialState);

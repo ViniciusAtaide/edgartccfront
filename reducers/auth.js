@@ -1,16 +1,13 @@
-import { USER_LOGGED_IN } from '../constants/ActionTypes';
-import merge from 'object-merge';
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../constants/ActionTypes';
+import reduceFn from '../lib/reduceFn'; 
 
 const initialState = {
   currentUser: null
 };
 
-const ActionsMap = {
-  [USER_LOGGED_IN]: (state, action) => ({ currentUser: action.token })
+const ActionMap = {
+  [USER_LOGGED_IN]: (state, action) => ({ currentUser: action.token }),
+  [USER_LOGGED_OUT]: (state, action) => ({ currentUser: ''})
 };
 
-export default function auth(state = initialState, action = null) {
-  const reduceFn = ActionsMap[action.type];
-  if (typeof reduceFn === 'undefined') return state;
-  return merge(state, reduceFn(state, action));
-}
+export default reduceFn.bind(this, ActionMap, initialState);

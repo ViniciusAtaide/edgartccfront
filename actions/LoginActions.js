@@ -1,5 +1,12 @@
-import { SUBSCRIBED_USER, TOGGLE_LOGIN, USER_LOGGED_IN, CHECK_LOGIN } from '../constants/ActionTypes';
-import auth from '../auth';
+import { SUBSCRIBED_USER, USER_LOGGED_OUT, TOGGLE_LOGIN, USER_LOGGED_IN, CHECK_LOGIN, SHOW_ERROR } from '../constants/ActionTypes';
+import auth from '../lib/auth';
+
+export function logout() {
+  auth.logout();
+  return {
+    type: USER_LOGGED_OUT
+  }
+} 
 
 export function routeLocationDidUpdate(location) {
   return {
@@ -7,7 +14,6 @@ export function routeLocationDidUpdate(location) {
     location
   };
 }
-
 
 export function toggleLogin() {
   return {
@@ -25,11 +31,17 @@ export function subscribe(user) {
 
 export function loginAction(email, pass) {
   return dispatch => {
-    auth.login(email, pass, _ => {
-      dispatch({
-        type: USER_LOGGED_IN,
-        token: localStorage.token
-      });
+    auth.login(email, pass, res => {
+      if (res)
+        dispatch({
+          type: USER_LOGGED_IN,
+          token: localStorage.token
+        });
+      else
+        dispatch({
+          type: SHOW_ERROR,
+          message: 'Usuário ou senha incorretos'
+        })
     });
   }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Footer } from '../components';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { checkLogin } from '../actions/LoginActions';
+import * as Actions from '../actions/LoginActions';
 
 @connect(state => ({
   auth: state.auth
@@ -17,10 +18,13 @@ export default class Layout extends Component {
     auth: React.PropTypes.object.isRequired
   };
 
+
+
   render() {
+    const { dispatcher } = this.props;
     return (
       <div>
-        <Header />
+        <Header { ...bindActionCreators(Actions, dispatch) } />
           { this.props.children }
         <Footer />
       </div>

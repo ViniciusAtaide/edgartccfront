@@ -24,7 +24,7 @@ export default class Header {
           <Nav>
             <NavItem eventKey={1}><Link to="/alunos">Alunos</Link></NavItem>
             <NavItem eventKey={2}><Link to="/professores">Professores</Link></NavItem>
-            <NavItem eventKey={3}><Button style="link">Logout</Button></NavItem>
+            <NavItem eventKey={3} onClick={ () => this.props.logout() }>Logout</NavItem>
           </Nav>
         :
           <div></div>

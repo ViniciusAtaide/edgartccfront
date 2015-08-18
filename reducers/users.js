@@ -1,5 +1,5 @@
 import { CREATE_USER } from '../constants/ActionTypes';
-import merge from 'object-merge';
+import reduceFn from '../lib/reduceFn';
 
 const initialState = [{
   login: "Vinny",
@@ -18,8 +18,4 @@ const ActionMap = {
   }
 };
 
-export default function (state = initialState, action = null) {
-  const reduceFn = ActionsMap[action.type];
-  if (typeof reduceFn === 'undefined') return state;
-  return merge({}, state, reduceFn(state, action));
-}
+export default reduceFn.bind(this, ActionMap, initialState);

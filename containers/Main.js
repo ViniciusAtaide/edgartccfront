@@ -11,10 +11,9 @@ export default class MainComponent extends Component {
   render() {
 
     const { reports, dispatch } = this.props;
-    let actions = bindActionCreators(Actions, dispatch);
 
     return (
-      <Main reports={reports} dispatch={actions} />
+      <Main { ...bindActionCreators(Actions, dispatch) } reports={reports} />
     );
   }
 }
