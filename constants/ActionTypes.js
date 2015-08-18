@@ -5,3 +5,4 @@ export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 export const ERROR_MESSAGE = 'ERROR_MESSAGE';
+export const HIDE_MESSAGE = 'HIDE_MESSAGE';

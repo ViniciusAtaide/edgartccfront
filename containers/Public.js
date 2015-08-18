@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import { Header, Footer } from '../components';
+import { Message } from '../containers';
 
 export default class Public extends Component {
 
@@ -13,7 +14,9 @@ export default class Public extends Component {
     return (
       <div style={bg}>
         <Header onlyBrand={true}/>
+        <Message />
         { this.props.children }
+        <Footer />
       </div>
     );
   }

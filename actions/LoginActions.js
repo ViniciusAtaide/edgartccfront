@@ -1,4 +1,5 @@
-import { SUBSCRIBED_USER, USER_LOGGED_OUT, TOGGLE_LOGIN, USER_LOGGED_IN, CHECK_LOGIN, SHOW_ERROR } from '../constants/ActionTypes';
+import { SUBSCRIBED_USER, USER_LOGGED_OUT, TOGGLE_LOGIN, USER_LOGGED_IN, CHECK_LOGIN, SHOW_ERROR, HIDE_MESSAGE } from '../constants/ActionTypes';
+
 import auth from '../lib/auth';
 
 export function logout() {
@@ -7,6 +8,12 @@ export function logout() {
     type: USER_LOGGED_OUT
   }
 } 
+
+export function dismiss() {
+  return {
+    type: HIDE_MESSAGE
+  }
+}
 
 export function routeLocationDidUpdate(location) {
   return {
@@ -42,6 +49,7 @@ export function loginAction(email, pass) {
           type: SHOW_ERROR,
           message: 'Usuário ou senha incorretos'
         })
+        setTimeout(() => dispatch({TYPE: HIDE_MESSAGE}), 3000)
     });
   }
 }
